@@ -10,7 +10,7 @@ const fastify = Fastify({
 });
 
 fastify.get("/", (req, res) => {
-  res.send({ saludo: "Hola mundo!" });
+  res.send({ message: "Hello world!" });
 });
 fastify.register(routes, { prefix: "/api/players" });
 

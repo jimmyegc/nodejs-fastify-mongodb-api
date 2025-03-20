@@ -2,7 +2,7 @@ import { PlayerModel } from "../models/PlayerModel.js";
 
 export const getPlayers = async (request, reply) => {
     try {
-        const players =  await PlayerModel.find()
+        const players = await PlayerModel.find()
         reply.status(200).send(players)    
     } catch (error) {
         reply.status(500).send({message:error.message})
@@ -26,9 +26,11 @@ export const createPlayer = async (request, reply) => {
     try {
         const player = await PlayerModel.create(request.body)
         reply.status(201).send(player)
-    } catch (error) {
+    } catch (error) {        
         if(error.name === 'ValidationError'){
-            const errors = Object.values(error.errors).map(error => error.message)
+            const errors = Object.values(error.errors).map(error => ({                
+                message: `${error.message} ${error.path}`
+            }))
             reply.status(400).send({message:'Validation error', errors})
         }else {
             reply.status(500).send({message:"An error has ocurred."})
