@@ -4,14 +4,14 @@ Content-Type: application/json
 
 {
   "name": "Player 1",
-  "agex": 21
+  "age": 21
 }
 
 ### Read Player
 GET http://localhost:3000/api/players
 
 ### Update Player
-PUT http://localhost:3000/api/players/67dc7517a05326a016cb6a97
+PUT http://localhost:3000/api/players/69697bc25fa9d7b26b0d87ca
 Content-Type: application/json
 
 {  
